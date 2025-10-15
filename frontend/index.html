@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anuvaad AI</title>
+    <meta name="description" content="Anuvaad AI - Nepali and Sinhala to English Machine Translation">
+    <link rel="stylesheet" href="/frontend/styles.css">
+    <script src="/frontend/script.js" defer></script>
+    <!-- Preload brand logo for faster first paint -->
+    <link rel="preload" as="image" href="/frontend/public/android-chrome-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/frontend/public/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/frontend/public/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/frontend/public/apple-touch-icon.png">
+    <link rel="manifest" href="/frontend/public/site.webmanifest">
+    <!-- Optional larger icons -->
+    <link rel="icon" type="image/png" sizes="192x192" href="/frontend/public/android-chrome-192x192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="/frontend/public/android-chrome-512x512.png">
+</head>
+<body>
+    <header class="header">
+        <div class="brand">
+            <a href="/" class="brand-link" aria-label="Go to home">
+                <img src="/frontend/public/android-chrome-192x192.png" alt="Anuvaad AI logo" class="brand-logo" width="44" height="44" decoding="async" fetchpriority="high">
+                <span class="brand-text">Anuvaad.ai</span>
+            </a>
+        </div>
+        <div class="tagline">Nepali and Sinhala to English translation</div>
+        <div class="header-actions">
+            <!-- Theme selector in header -->
+            <label for="theme-select" class="sr-only">Theme</label>
+            <select id="theme-select" class="theme-select" aria-label="Theme">
+              <option value="gradient">Gradient (Default)</option>
+              <option value="light">Light</option>
+              <option value="dark">Dark</option>
+              <option value="ocean">Ocean</option>
+              <option value="sunset">Sunset</option>
+              <option value="forest">Forest</option>
+              <option value="rose">Rose</option>
+              <option value="slate">Slate</option>
+            </select>
+            <button id="theme-toggle" class="ghost" aria-label="Toggle theme">Dark mode</button>
+            <!-- Header status indicator -->
+        </div>
+    </header>
+    <main class="container">
+        <div class="grid">
+            <section class="panel">
+                <label for="text-to-translate" class="label">Enter text to translate</label>
+                <textarea id="text-to-translate" rows="10" placeholder="Type or paste text here. For batch translation, enter one sentence per line."></textarea>
+                <div class="controls">
+                    <div class="control">
+                        <label for="source-language" class="label">Source language</label>
+                        <select id="source-language"></select>
+                        <small id="lang-detect-hint" class="hint" aria-live="polite"></small>
+                    </div>
+                    <div class="control toggle">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="batch-toggle" />
+                            Batch mode
+                        </label>
+                        <small class="hint">Translate multiple lines at once</small>
+                    </div>
+                    <!-- Borrowed words / names correction toggle -->
+                    <div class="control toggle">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="borrowed-toggle" checked />
+                            Fix borrowed words and names
+                        </label>
+                        <small class="hint">Transliterate and correct English-like names (e.g., Coco Beach)</small>
+                    </div>
+                    <!-- Dataset processing (no data display to users) -->
+                    <div class="control">
+                        <label for="process-data-button" class="label">Dataset processing</label>
+                        <button id="process-data-button" class="ghost" aria-label="Process dataset">Process data</button>
+                        <small id="process-data-status" class="hint" aria-live="polite"></small>
+                    </div>
+                </div>
+                <div class="actions">
+                    <button id="translate-button" class="primary">Translate</button>
+                    <button id="clear-button" class="ghost" aria-label="Clear input">Clear</button>
+                </div>
+            </section>
+            <section class="panel">
+                <div class="panel-header">
+                    <h2>Translated Text</h2>
+                    <div class="panel-actions">
+                        <button id="copy-button" class="ghost" aria-label="Copy output">Copy</button>
+                        <button id="download-button" class="ghost" aria-label="Download output">Download</button>
+                        <button id="share-button" class="ghost" aria-label="Share link">Share</button>
+                    </div>
+                </div>
+                <div id="output" class="output" role="status" aria-live="polite"></div>
+            </section>
+        </div>
+    </main>
+    <footer class="footer">
+        <span>Powered by NLLB and FastAPI</span>
+    </footer>
+</body>
+</html>
