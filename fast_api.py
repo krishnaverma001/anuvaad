@@ -37,7 +37,7 @@ SUPPORTED_LANGUAGES = {
     "sinhala": "sin_Sinh",
 }
 
-MODEL_PATH = "https://huggingface.co/krishnaverma01/anuvaad"
+MODEL_PATH = "krishnaverma01/anuvaad"
 
 model = None
 tokenizer = None
